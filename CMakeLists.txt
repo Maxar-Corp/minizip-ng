@@ -97,6 +97,7 @@ set(MINIZIP_LFG)
 set(MINIZIP_SRC
     mz_crypt.c
     mz_os.c
+    mz_secure_api.c
     mz_strm.c
     mz_strm_buf.c
     mz_strm_mem.c
@@ -107,13 +108,14 @@ set(MINIZIP_SRC
 # Initial header files
 set(MINIZIP_HDR
     mz.h
-    mz_os.h
     mz_crypt.h
+    mz_os.h
+    mz_secure_api.h
     mz_strm.h
     mz_strm_buf.h
     mz_strm_mem.h
-    mz_strm_split.h
     mz_strm_os.h
+    mz_strm_split.h
     mz_zip.h
     mz_zip_rw.h)
 
