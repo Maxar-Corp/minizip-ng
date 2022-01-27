@@ -18,8 +18,6 @@
 
 #include <ctype.h> /* tolower */
 
-#define MAX_PATH (512)
-
 /***************************************************************************/
 
 int32_t mz_path_combine(char *path, const char *join, int32_t max_path) {
@@ -54,7 +52,7 @@ int32_t mz_path_append_slash(char *path, int32_t max_path, char slash) {
 }
 
 int32_t mz_path_remove_slash(char *path) {
-    size_t path_len = strnlen_s(path, MAX_PATH);
+    size_t path_len = strnlen_s(path, PATH_MAX);
     while (path_len > 0) {
         if (path[path_len - 1] == '\\' || path[path_len - 1] == '/')
             path[path_len - 1] = 0;
@@ -67,7 +65,7 @@ int32_t mz_path_remove_slash(char *path) {
 }
 
 int32_t mz_path_has_slash(const char *path) {
-    size_t path_len = strnlen_s(path, MAX_PATH);
+    size_t path_len = strnlen_s(path, PATH_MAX);
     if (path[path_len - 1] != '\\' && path[path_len - 1] != '/')
         return MZ_EXIST_ERROR;
 

@@ -148,6 +148,11 @@
 #endif
 
 #if defined(_WIN32) && defined(MZ_EXPORTS)
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#ifndef PATH_MAX
+#define PATH_MAX MAX_PATH
+#endif
 #define MZ_EXPORT __declspec(dllexport)
 #else
 #define MZ_EXPORT

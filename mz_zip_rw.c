@@ -1544,7 +1544,7 @@ int32_t mz_zip_writer_add_file(void *handle, const char *path, const char *filen
     int32_t err = MZ_OK;
     uint8_t src_sys = 0;
     void *stream = NULL;
-    char link_path[1024];
+    char link_path[PATH_MAX];
     const char *filename = filename_in_zip;
 
 
@@ -1625,8 +1625,8 @@ int32_t mz_zip_writer_add_path(void *handle, const char *path, const char *root_
     const char *filename = NULL;
     const char *filenameinzip = path;
     char *wildcard_ptr = NULL;
-    char full_path[1024];
-    char path_dir[1024];
+    char full_path[PATH_MAX];
+    char path_dir[PATH_MAX];
 
 
     if (strrchr(path, '*') != NULL) {
@@ -1649,7 +1649,7 @@ int32_t mz_zip_writer_add_path(void *handle, const char *path, const char *root_
                 if (mz_path_get_filename(filenameinzip, &filename) == MZ_OK)
                     filenameinzip = filename;
             } else {
-                filenameinzip += strnlen_s(root_path, 1024);
+                filenameinzip += strnlen_s(root_path, PATH_MAX);
             }
         }
 

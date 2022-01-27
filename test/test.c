@@ -1252,7 +1252,7 @@ int32_t test_secure_api(void)
     printf("OK\n");
 
     // strncat_s tests
-    printf("Testing strncpy_s...");
+    printf("Testing strncat_s...");
     rc = strncat_s(dest, sizeof(dest), small, sizeof(small));
     if (rc != MZ_OK) {
         printf("Unexpected error in strncat_s!\n");
