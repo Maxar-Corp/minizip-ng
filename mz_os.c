@@ -42,12 +42,14 @@ int32_t mz_path_combine(char *path, const char *join, int32_t max_path) {
 
 int32_t mz_path_append_slash(char *path, int32_t max_path, char slash) {
     size_t path_len = strnlen_s(path, max_path);
-    if ((path_len + 2) >= max_path)
+    if (path[path_len - 1] == '\\' || path[path_len - 1] == '/')
+        return MZ_OK;
+    else if ((path_len + 2) >= max_path)
         return MZ_BUF_ERROR;
-    if (path[path_len - 1] != '\\' && path[path_len - 1] != '/') {
-        path[path_len - 1] = slash;
-        path[path_len] = 0;
-    }
+
+    path[path_len] = slash;
+    path[path_len + 1] = 0;
+
     return MZ_OK;
 }
 
