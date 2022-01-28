@@ -567,8 +567,8 @@ static int32_t mz_zip_entry_needs_zip64(mz_zip_file *file_info, uint8_t local, u
         max_uncompressed_size -= MZ_ZIP_UNCOMPR_SIZE64_CUSHION;
     }
 
-    needs_zip64 = (uint8_t)(file_info->uncompressed_size >= max_uncompressed_size) ||
-                  (file_info->compressed_size >= UINT32_MAX);
+    needs_zip64 = (uint8_t)((file_info->uncompressed_size >= max_uncompressed_size) ||
+                  (file_info->compressed_size >= UINT32_MAX));
 
     if (!local) {
         /* Disk offset and number only used in central directory header */
